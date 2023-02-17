@@ -9,7 +9,7 @@
 
             <div class='flex gap-4'>
                 <a href='/' class='hover:text-sky-600' >Home</a>
-                <a href='/admin' class='hover:text-sky-600'>Admin</a>
+                <a href='/admin/user' class='hover:text-sky-600'>Admin</a>
                 <form metdod="POST" action="{{ route('logout') }}" >
                     @csrf
                     <button class='text-red-400'> {{__('Logout')}} </button>

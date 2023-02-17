@@ -10,7 +10,7 @@
                     <td class='px-8 py-3'>Etat</td>
                     <td class='px-8 py-3'>Categorie</td>
                     <td class='px-8 py-3'>Date Ouverture</td>
-                    <td class='px-8 py-3'>Date Update</td>
+                    <td class='px-8 py-3'>Date Modification</td>
                     <td class='px-8 py-3 rounded-tr-2xl'>Actions</td>
                 </tr>
             </thead>

@@ -111,7 +111,7 @@ class HomeController extends Controller
             redirect('/ticket/s/all');
         }
 
-        return view('tickets.allForm')
+        return view('tickets.allform')
             ->with(['ticket' => $ticket, 'categories' => Category::all(), 'statuses' => Status::all()]);
     }
 

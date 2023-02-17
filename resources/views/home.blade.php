@@ -11,7 +11,7 @@
                 <a href="{{ route('home.index') }}" >Home</a>
 
                 @if (auth()->user()->role->name == 'ADMIN')
-                    <a href="{{ route('admin.index') }}">Admin</a>
+                    <a href="{{ route('admin.user.index') }}">Admin</a>
                 @endif
 
 

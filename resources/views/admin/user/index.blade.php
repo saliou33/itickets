@@ -46,7 +46,7 @@
 
     <div class="">
         <div>
-        <button type="button" class="absolute z-50 bottom-6 right-3  rounded-full inline-block w-[3rem] h-[3rem] bg-sky-400 text-white font-medium text-4xl leading-tight uppercase shadow-md hover:bg-sky-500 hover:shadow-lg focus:bg-sky-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-400 active:shadow-lg transition duration-150 ease-in-out" data-bs-toggle="modal" data-bs-target="#exampleModalCenteredScrollable">
+        <button type="button" class="absolute z-50 bottom-6 right-3  rounded-full inline-block w-[3rem] h-[3rem] bg-sky-700 text-white font-medium text-4xl leading-tight uppercase shadow-md hover:bg-sky-500 hover:shadow-lg focus:bg-sky-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-400 active:shadow-lg transition duration-150 ease-in-out" data-bs-toggle="modal" data-bs-target="#exampleModalCenteredScrollable">
             +
         </button>
         </div>
@@ -62,7 +62,7 @@
                 class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
                 data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form method="POST" action="{{ route('home.store') }}">
+            <form method="POST" action="{{ route('admin.user.store') }}">
                 <div class="modal-body relative p-4 text-sm">
                     <div class='flex flex-col gap-4'>
                         @csrf
@@ -98,25 +98,21 @@
                         </div>
 
                         <div class='flex flex-col gap-2'>
-                            <label for="confirm_password">Confirmer Mot de Passe</label>
+                            <label for="password-confirm">Confirmer Mot de Passe</label>
                             <div class='flex-1'>
-                                <input type="password" id="confirm_password" name="confirm_password" class='w-full p-2 outline-none rounded-sm border' required/>
-                                @error('confirm_password')
-                                    <span class='text-red-500 text-[12px]'>{{ $message }}</span>
-                                @enderror
+                                <input type="password" id="passwor-confirm" name="password_confirmation" class='w-full p-2 outline-none rounded-sm border' required/>
                             </div>
                         </div>
-
 
 
 
                         <div class='flex flex-wrap gap-2 items-center'>
                             <label for="role">Role:</label>
                             <div class='flex-1'>
-                               <select name="role" id="role" class='rounded-sm py-2 px-3 bg-gray-100'>
-                                    <option value="CLIENT">CLIENT</option>
-                                    <option value="SUPPORT">SUPPORT</option>
-                                    <option value="ADMIN">ADMIN</option>
+                               <select name="role_id" id="role" class='rounded-sm py-2 px-3 bg-gray-100'>
+                                    @foreach ($roles as $role )
+                                        <option value="{{ $role->id }}"> {{ $role->name }} </option>
+                                    @endforeach
                                </select>
                                 @error('role)')
                                     <span class='text-red-500 text-[12px]'>{{ $message }}</span>
