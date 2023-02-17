@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Status;
 use App\Models\Ticket;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -27,7 +29,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('tickets.index')
+        return view('ticket.index')
             ->with(['categories' => Category::all()]);
     }
 
@@ -66,7 +68,7 @@ class HomeController extends Controller
             redirect('/');
         }
 
-        return view('tickets.form')
+        return view('ticket.form')
             ->with(['ticket' => $ticket, 'categories' => Category::all()]);
     }
 
@@ -93,7 +95,7 @@ class HomeController extends Controller
 
     public function all() {
         if(Gate::allows('support')){
-            return view('tickets.all')
+            return view('ticket.all')
                 ->with(['tickets' => Ticket::all()->where('status_id', '!=', 6)]);
         }
 
@@ -111,7 +113,7 @@ class HomeController extends Controller
             redirect('/ticket/s/all');
         }
 
-        return view('tickets.allform')
+        return view('ticket.allform')
             ->with(['ticket' => $ticket, 'categories' => Category::all(), 'statuses' => Status::all()]);
     }
 
@@ -137,4 +139,43 @@ class HomeController extends Controller
         return back();
     }
 
+
+
+    public function userShow($id) {
+        $user = User::find($id);
+
+        if($user == null) {
+            return back();
+        }
+
+        return view('user.form')
+            ->with(['user' => $user]);
+    }
+
+    public function userUpdate(Request $request) {
+        $request->validate([
+            'id' => 'required',
+            'name' => 'required|string|min:4',
+            'password' => 'required|min:8|confirmed',
+            'email' => 'required|string|email',
+            'role_id' => 'required'
+        ]);
+
+        $fields = $request->only(['id', 'name', 'email', 'role', 'password']);
+
+        $user = User::find($fields['id']);
+
+        if($user == null) {
+            return back();
+        }
+
+
+        $user->name = $fields['name'];
+        $user->email = $fields['email'];
+        $user->role_id = $fields['role_id'];
+        $user->password = Hash::make($fields['password']);
+
+        $user->save();
+        return back();
+    }
 }

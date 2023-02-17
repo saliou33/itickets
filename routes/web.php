@@ -25,6 +25,11 @@ Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
 
+    Route::prefix('user')->group(function () {
+        Route::get('/{id}', [HomeController::class, 'userShow'])->name('home.user_show');
+        Route::patch('/', [HomeController::class, 'userUpdate'])->name('home.user_update');
+    });
+
     Route::prefix('ticket')->group(function () {
         Route::get('/', [HomeController::class, 'index'])->name('home.index');
         Route::get('/{id}', [HomeController::class, 'show'])->name('home.show');
@@ -80,7 +85,6 @@ Route::middleware(['auth'])->group(function () {
         });
 
     });
-
 
     Route::fallback(function () {
         return redirect('/ticket');
