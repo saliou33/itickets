@@ -18,21 +18,21 @@ class UsersTableSeeder extends Seeder
             'name' => 'client',
             'email' => 'client@tickets.org',
             'password' => Hash::make('client'),
-            'role' => 'CLIENT'
+            'role_id' => 1
         ]);
 
         DB::table('users')->insert([
             'name' => 'support',
             'email' => 'support@tickets.org',
             'password' => Hash::make('support'),
-            'role' => 'SUPPORT'
+            'role_id' => 2
         ]);
 
         DB::table('users')->insert([
             'name' => 'admin',
             'email' => 'admin@tickets.org',
             'password' => Hash::make('admin'),
-            'role' => 'ADMIN'
+            'role_id' => 3
         ]);
 
     }
