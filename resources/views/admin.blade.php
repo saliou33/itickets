@@ -27,6 +27,8 @@
                 <span class='block w-1/2 h-0.5 bg-gray-200'></span>
                 <a class='hover:text-sky-300' href='/admin/status'>Etats</a>
                 <span class='block w-1/2 h-0.5 bg-gray-200'></span>
+                <a class='hover:text-sky-300' href='/admin/role'>Roles</a>
+                <span class='block w-1/2 h-0.5 bg-gray-200'></span>
             </div>
             @yield('main')
         </div>

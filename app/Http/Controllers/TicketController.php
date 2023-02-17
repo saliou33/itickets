@@ -12,7 +12,11 @@ class TicketController extends Controller
 {
     public function index() {
         return view('admin.ticket.index')
-        ->with(['categories' => Category::all(), 'statuses' => Status::all() ]);
+        ->with([
+            'tickets' => Ticket::all(),
+            'categories' => Category::all(),
+            'statuses' => Status::all()
+         ]);
     }
 
     public function store(Request $request) {

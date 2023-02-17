@@ -2,7 +2,7 @@
 @section('main')
 
     <div class='px-12 py-5 text-sm'>
-        <h1 class='text-xl mb-6'>Mes Tickets</h1>
+        <h1 class='text-xl mb-6'>Tickets</h1>
         <table class='table-auto font-serif overflow-x-scroll'>
             <thead class='border-b'>
                 <tr class='bg-gray-100 text-[1.1rem]'>
@@ -17,7 +17,7 @@
             </thead>
 
             <tbody>
-                @foreach(auth()->user()->tickets as $ticket)
+                @foreach($tickets as $ticket)
                     <tr class='border-b h-4'>
                         <td class='px-8 py-2'>{{$ticket->title}}</td>
                         <td class='px-8 py-2'>{{$ticket->user->id}}</td>
@@ -64,7 +64,7 @@
                 class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
                 data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form method="POST" action="{{ route('home.store') }}">
+            <form method="POST" action="{{ route('admin.ticket.store') }}">
                 <div class="modal-body relative p-4 text-sm">
                     <div class='flex flex-col gap-4'>
                         @csrf
