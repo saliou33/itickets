@@ -46,7 +46,7 @@ class UserController extends Controller
         }
 
         return view('admin.user.form')
-            ->with(['user' => $user]);
+            ->with(['user' => $user, 'roles' => Role::all()]);
     }
 
     public function update(Request $request) {
@@ -54,11 +54,10 @@ class UserController extends Controller
             'id' => 'required',
             'name' => 'required|string|min:4',
             'email' => 'required|string|email',
-            'password' => 'required|string|confirmed|min:8',
             'role_id' => 'required'
         ]);
 
-        $fields = $request->only(['id', 'name', 'email', 'password', 'role']);
+        $fields = $request->only(['id', 'name', 'email', 'role']);
 
        $user = User::find($fields['id']);
 
@@ -68,7 +67,6 @@ class UserController extends Controller
 
        $user->name = $fields['name'];
        $user->email = $fields['email'];
-       $user->password = Hash::make($fields['password']);
        $user->role_id = $fields['role_id'];
 
        $user->save();
