@@ -5,7 +5,7 @@
 
         <h1 class='text-xl mt-2 mb-6'>status</h1>
 
-        <form method="POST" action="/admin/status"  class='flex flex-col gap-3'>
+        <form method="POST" action="/admin/status"  class='flex flex-col gap-3 min-w-[25rem]'>
             @method('PATCH')
             @csrf
             <input type='hidden' name='id' value="{{$status->id}}" >

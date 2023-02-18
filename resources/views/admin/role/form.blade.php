@@ -5,7 +5,7 @@
 
         <h1 class='text-xl mt-2 mb-6'>Role</h1>
 
-        <form method="POST" action="/admin/role"  class='flex flex-col gap-3'>
+        <form method="POST" action="/admin/role"  class='flex flex-col gap-3 min-w-[25rem]'>
             @method('PATCH')
             @csrf
             <input type='hidden' name='id' value="{{$role->id}}" >

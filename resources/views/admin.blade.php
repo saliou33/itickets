@@ -11,8 +11,8 @@
             </div>
 
             <div class='flex gap-4 items-center'>
-                <a href='/' class='hover:text-sky-600' >Home</a>
-                <a href='/admin/user' class='hover:text-sky-600'>Admin</a>
+                <a href='/' class='hover:text-sky-600 text-gray-100' >Home</a>
+                <a href='/admin/user' class='hover:text-sky-600 text-gray-100'>Admin</a>
 
                 <div class="flex justify-center">
                 <div>

@@ -120,7 +120,6 @@ class HomeController extends Controller
 
 
     public function allUpdate(Request $request) {
-
         if(Gate::denies('support')) {
             return back()->with('danger', 'Non Autoriser.');;
 
@@ -140,7 +139,6 @@ class HomeController extends Controller
 
         return back()->with('info', 'Ticket modifier avec succes.');
     }
-
 
 
     public function userShow($id) {

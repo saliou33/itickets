@@ -4,7 +4,7 @@
     <div class='px-12 py-3 text-sm'>
 
         <h1 class='text-xl mt-2 mb-6'>Profil</h1>
-        <form method="POST" action="/user"  class='flex flex-col gap-3'>
+        <form method="POST" action="/user"  class='flex flex-col gap-3 min-w-[25rem]'>
             @method('PATCH')
             @csrf
             <input type='hidden' name='id' value="{{$user->id}}" >
@@ -27,7 +27,7 @@
             <div class='flex flex-col gap-2'>
                     <label for="email" class='text-sky-800'>Email:</label>
                     <div>
-                        <input type="email" id="email" name="email" class='w-full p-2 outline-none rounded-md  border'  value="{{$user->email}}" required/>
+                        <input type="email" id="email" name="email" class='w-full p-2 outline-none rounded-md border'  value="{{$user->email}}" required/>
                         @error('email')
                             <span class='text-red-500 text-[12px]'>{{ $message }}</span>
                         @enderror
