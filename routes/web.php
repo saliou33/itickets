@@ -41,6 +41,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/', [HomeController::class, 'all'])->name('home.all');
             Route::patch('/', [HomeController::class, 'allUpdate'])->name('home.all_update');
             Route::get('/{id}', [HomeController::class, 'allShow'])->name('home.all_show');
+            Route::post('/assign', [HomeController::class, 'toggleAssignTicket'])->name('home.assign');
         });
     });
 

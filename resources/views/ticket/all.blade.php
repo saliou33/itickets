@@ -23,7 +23,7 @@
                         <td class='px-8 py-2'>{{$ticket->category->name}}</td>
                         <td class='px-8 py-2'>{{$ticket->created_at}}</td>
                         <td class='px-8 py-2'>{{$ticket->updated_at}}</td>
-                        <td class='flex justify-center items-center gap-3'>
+                        <td class='flex px-6 items-center gap-3 justify-start'>
 
                             <button class='py-2'>
                                 <a href="/ticket/s/all/{{$ticket->id}}">
@@ -31,13 +31,23 @@
                                 </a>
                             </button>
 
+                            @if (($n = ($ticket->support_id < 0)) || $ticket->support_id == auth()->user()->id)
+                                <form method='POST' action="{{ route('home.assign') }}">
+                                    @csrf
+                                    <input type='hidden' name='ticket_id' value='{{$ticket->id}}'/>
+                                    <input type='hidden' name='support_id' value='{{auth()->user()->id}}'/>
+
+                                    <button type='submit'>
+                                        <svg xmlns="http://www.w3.org/2000/svg"  class="{{ $n ? 'fill-gray-500' : 'fill-sky-500' }}"  id="Filled" viewBox="0 0 24 24" width="20" height="20"><path d="M1.327,12.4,4.887,15,3.535,19.187A3.178,3.178,0,0,0,4.719,22.8a3.177,3.177,0,0,0,3.8-.019L12,20.219l3.482,2.559a3.227,3.227,0,0,0,4.983-3.591L19.113,15l3.56-2.6a3.227,3.227,0,0,0-1.9-5.832H16.4L15.073,2.432a3.227,3.227,0,0,0-6.146,0L7.6,6.568H3.231a3.227,3.227,0,0,0-1.9,5.832Z"/></svg>
+                                    </button>
+                                </form>
+                            @endif
+
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
-
-
 
 @endsection

@@ -186,4 +186,35 @@ class HomeController extends Controller
         $user->save();
         return back()->with('success', 'Utilisateur modifier avec succes.');
     }
+
+    public function toggleAssignTicket(Request $request) {
+        $request->validate([
+            'ticket_id' => 'required',
+            'support_id' => 'required',
+        ]);
+
+        $fields = $request->only(['ticket_id', 'support_id']);
+
+        $ticket = Ticket::find($fields['ticket_id']);
+        if($ticket  == null) {
+            return back()->with('danger', 'Ticket introuvable.');
+        }
+
+        $user = User::find($fields['support_id']);
+        if($user == null) {
+            return back()->with('danger', 'Utilisateur Introuvable.');;
+        }
+
+        if($ticket->support_id == $user->id) {
+            $ticket->support_id = -1;
+            $ticket->save();
+
+            return back()->with('warning', 'Ticket desassigner avec succes.');
+        }
+
+
+        $ticket->support_id = $user->id;
+        $ticket->save();
+        return back()->with('success', 'Ticket assigner avec succes.');
+    }
 }

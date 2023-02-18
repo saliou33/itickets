@@ -14,7 +14,6 @@
                 <p>{{$ticket->id}}</p>
             </div>
 
-
             <div class='flex flex-wrap gap-2 items-center'>
                 <label for="status" class='text-sky-800'>Etat:</label>
 
@@ -40,6 +39,7 @@
                 </div>
             </div>
 
+
             <div class='flex flex-col gap-2'>
                 <label for="user_id" class='text-sky-800'>User ID:</label>
                 <div>
@@ -50,6 +50,15 @@
                 </div>
             </div>
 
+            <div class='flex flex-col gap-2'>
+                <label for="support_id" class='text-sky-800'>Support ID:</label>
+                <div>
+                    <input type="support_id" id="support_id" name="support_id" class='w-full p-2 outline-none rounded-md  border'  value="{{$ticket->support_id}}" />
+                    @error('support_id')
+                        <span class='text-red-500 text-[12px]'>{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
 
 
             <div class='flex flex-col gap-2'>

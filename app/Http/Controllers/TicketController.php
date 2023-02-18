@@ -28,7 +28,7 @@ class TicketController extends Controller
             'status_id' => 'required'
         ]);
 
-        $fields = $request->only(['user_id', 'title', 'message', 'category_id']);
+        $fields = $request->only(['user_id', 'title', 'message', 'category_id', 'status_id']);
 
         if(User::find($fields['user_id'] == null)) {
             return back()->with('danger', 'utilisateur introuvable.');
@@ -68,7 +68,7 @@ class TicketController extends Controller
             'status_id' => 'required'
         ]);
 
-        $fields = $request->only(['id', 'title', 'message', 'category_id', 'user_id', 'status_id']);
+        $fields = $request->only(['id', 'title', 'message', 'category_id', 'user_id', 'status_id', 'support_id']);
 
         if(User::find($fields['user_id'] == null)) {
             return back()->with('danger', 'utilisateur introuvable.');;
@@ -81,6 +81,7 @@ class TicketController extends Controller
         $ticket->message = $fields['message'];
         $ticket->user_id = $fields['user_id'];
         $ticket->status_id = $fields['status_id'];
+        $ticket->support_id = $fields['support_id'];
 
         $ticket->save();
 

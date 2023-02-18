@@ -14,6 +14,13 @@
                 <p>{{$ticket->id}}</p>
             </div>
 
+            @if($ticket->support_id > -1)
+            <div class='flex gap-4 items-baseline'>
+                <p class='text-sky-800'>Support Id:</p>
+                <p>{{$ticket->support_id}}</p>
+            </div>
+            @endif
+
 
             <div class='flex flex-wrap gap-2 items-center'>
                 <label for="status" class='text-sky-800'>Etat:</label>
