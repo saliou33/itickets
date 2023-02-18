@@ -3,7 +3,7 @@
 @section('content')
 <div class='flex flex-col items-center justify-center min-h-screen'>
     <h1 class='text-3xl text-sky-700 text-bold mb-8' >S'inscrire</h1>
-    <form method="POST" action="{{ route('login') }}" class='flex flex-col gap-6 shadow-sm p-8 bg-gray-300 rounded-lg w-[24rem]' >
+    <form method="POST" action="{{ route('register') }}" class='flex flex-col gap-6 shadow-sm p-8 bg-gray-300 rounded-lg w-[24rem]' >
         @csrf
 
         <div class='flex flex-col gap-0.5'>
@@ -16,7 +16,6 @@
             </div>
         </div>
 
-
         <div class='flex flex-col gap-0.5'>
             <label for="email">Email</label>
             <div>
@@ -28,7 +27,7 @@
         </div>
 
         <div class='flex flex-col gap-0.5'>
-            <label for="password">Password</label>
+            <label for="password">Mot de Passe</label>
             <div>
                 <input type="password" id="password" name="password" class='w-full p-2 outline-none rounded-md '/>
                 @error('password')
@@ -38,9 +37,9 @@
         </div>
 
         <div class='flex flex-col gap-0.5'>
-            <label for="password-confirm">Password</label>
+            <label for="password-confirm">Confirmer Mot de Passe</label>
             <div>
-                <input type="password-confim" id="password-confirm" name="password_confirmation" class='w-full p-2 outline-none rounded-md '/>
+                <input type="password" id="password-confirm" name="password_confirmation" class='w-full p-2 outline-none rounded-md '/>
             </div>
         </div>
 
