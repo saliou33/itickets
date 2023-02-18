@@ -3,7 +3,7 @@
 
     <div class='px-12 py-3 text-sm'>
 
-        <h1 class='text-xl mt-2 mb-6'>Moi</h1>
+        <h1 class='text-xl mt-2 mb-6'>Profil</h1>
 
         <form method="POST" action="/ticket"  class='flex flex-col gap-3'>
             @method('PATCH')

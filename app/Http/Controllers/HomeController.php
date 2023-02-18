@@ -52,13 +52,13 @@ class HomeController extends Controller
         $ticket->status_id = 1;
         $ticket->save();
 
-        return back();
+        return back()->with('success', 'Ticket creer avec succes.');
     }
 
     public function delete($id) {
         Ticket::destroy($id);
 
-        return back();
+        return back()->with('warning', 'Ticket supprimer avec succes.');
     }
 
     public function show($id) {
@@ -89,7 +89,7 @@ class HomeController extends Controller
         $ticket->message = $fields['message'];
         $ticket->save();
 
-        return back();
+        return back()->with('success', 'Ticket modifier avec succes.');
     }
 
 
@@ -105,12 +105,13 @@ class HomeController extends Controller
 
     public function allShow($id) {
         if(Gate::denies('support')) {
-            return redirect('/');
+            return back()->with('danger', 'Non Autoriser.');;
         }
 
         $ticket = Ticket::find($id);
+
         if($ticket == null){
-            redirect('/ticket/s/all');
+            return redirect('/ticket/s/all');
         }
 
         return view('ticket.allform')
@@ -121,7 +122,8 @@ class HomeController extends Controller
     public function allUpdate(Request $request) {
 
         if(Gate::denies('support')) {
-            return redirect('/');
+            return back()->with('danger', 'Non Autoriser.');;
+
         }
 
         $request->validate([
@@ -136,7 +138,7 @@ class HomeController extends Controller
         $ticket->status_id = $fields['status_id'];
         $ticket->save();
 
-        return back();
+        return back()->with('success', 'Ticket modifier avec succes.');
     }
 
 
@@ -166,7 +168,7 @@ class HomeController extends Controller
         $user = User::find($fields['id']);
 
         if($user == null) {
-            return back();
+            return back()->with('warning', 'Utilisateur Introuvable.');;
         }
 
 
@@ -176,6 +178,6 @@ class HomeController extends Controller
         $user->password = Hash::make($fields['password']);
 
         $user->save();
-        return back();
+        return back()->with('success', 'Utilisateur modifier avec succes.');
     }
 }

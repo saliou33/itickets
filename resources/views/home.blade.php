@@ -2,10 +2,14 @@
 
 @section('content')
     <div class='mx-6'>
+
+        @include('utils.flash')
+
         <nav class='bg-sky-300 py-4 px-6 rounded-xl flex items-center shadow-sm justify-between mb-10'>
             <div class='text-2xl text-cyan-700 font-semibold'>
                 iTickets
             </div>
+
 
             <div class='flex gap-4 items-center'>
                 <a href="{{ route('home.index') }}" >Home</a>

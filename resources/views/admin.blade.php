@@ -2,6 +2,9 @@
 
 @section('content')
     <div class='mx-6'>
+
+        @include('utils.flash')
+
         <nav class='bg-sky-700 py-4 px-6 rounded-xl flex shadow-sm justify-between mb-10'>
             <div class='text-2xl text-sky-300 font-semibold'>
                 iTickets
