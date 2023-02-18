@@ -12,7 +12,7 @@
             <div class='flex flex-col gap-2'>
                 <label for="name" class='text-sky-800'>Nom:</label>
                 <div>
-                    <input type="name" id="name" name="name" class='w-full p-2 outline-none rounded-sm border'  value="{{$user->name}}" required/>
+                    <input type="name" id="name" name="name" class='w-full p-2 outline-none rounded-md  border'  value="{{$user->name}}" required/>
                     @error('name')
                         <span class='text-red-500 text-[12px]'>{{ $message }}</span>
                     @enderror
@@ -27,7 +27,7 @@
             <div class='flex flex-col gap-2'>
                     <label for="email" class='text-sky-800'>Email:</label>
                     <div>
-                        <input type="email" id="email" name="email" class='w-full p-2 outline-none rounded-sm border'  value="{{$user->email}}" required/>
+                        <input type="email" id="email" name="email" class='w-full p-2 outline-none rounded-md  border'  value="{{$user->email}}" required/>
                         @error('email')
                             <span class='text-red-500 text-[12px]'>{{ $message }}</span>
                         @enderror
@@ -37,7 +37,7 @@
             <div class='flex flex-col gap-2'>
                     <label for="password" class='text-sky-800'>Mot de Passe:</label>
                     <div>
-                        <input type="password" id="password" name="password" class='w-full p-2 outline-none rounded-sm border' required/>
+                        <input type="password" id="password" name="password" class='w-full p-2 outline-none rounded-md  border' required/>
                         @error('password')
                             <span class='text-red-500 text-[12px]'>{{ $message }}</span>
                         @enderror
@@ -47,7 +47,7 @@
             <div class='flex flex-col gap-2'>
                     <label for="password-confirm" class='text-sky-800'>Confirmer Mot de Passe:</label>
                     <div>
-                        <input type="password" id="password-confirm" name="password_confirmation" class='w-full p-2 outline-none rounded-sm border'  required/>
+                        <input type="password" id="password-confirm" name="password_confirmation" class='w-full p-2 outline-none rounded-md  border'  required/>
                     </div>
             </div>
 

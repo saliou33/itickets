@@ -19,7 +19,7 @@
                 <label for="status" class='text-sky-800'>Etat:</label>
 
                 <div>
-                    <select name="status_id" id="status" class='rounded-sm p-1 bg-gray-100 ' value="{{$ticket->category_id}}">
+                    <select name="status_id" id="status" class='rounded-md  p-1 bg-gray-100 ' value="{{$ticket->category_id}}">
                         @foreach ($statuses as $status)
                             <option value="{{$status->id}}" {{ $status->id == $ticket->status_id ? "selected" : "" }}>{{ $status->name }}</option>
                         @endforeach
@@ -33,7 +33,7 @@
             <div class='flex flex-col gap-2'>
                 <label for="title" class='text-sky-800'>Titre:</label>
                 <div>
-                    <input type="title" id="title" name="title" class='w-full p-2 outline-none rounded-sm border'  value="{{$ticket->title}}" required />
+                    <input type="title" id="title" name="title" class='w-full p-2 outline-none rounded-md  border'  value="{{$ticket->title}}" required />
                     @error('title')
                         <span class='text-red-500 text-[12px]'>{{ $message }}</span>
                     @enderror
@@ -43,7 +43,7 @@
             <div class='flex flex-col gap-2'>
                 <label for="user_id" class='text-sky-800'>User ID:</label>
                 <div>
-                    <input type="user_id" id="title" name="user_id" class='w-full p-2 outline-none rounded-sm border'  value="{{$ticket->user_id}}" required />
+                    <input type="user_id" id="title" name="user_id" class='w-full p-2 outline-none rounded-md  border'  value="{{$ticket->user_id}}" required />
                     @error('user_id')
                         <span class='text-red-500 text-[12px]'>{{ $message }}</span>
                     @enderror
@@ -55,7 +55,7 @@
             <div class='flex flex-col gap-2'>
                 <label for="message" class='text-sky-800'>Description:</label>
                 <div class='flex-1'>
-                    <textarea id='message' name='message' class='h-24 p-2 w-full border overflow-y-scroll rounded-sm outline-none md:w-[25rem]' required >{{$ticket->message}}</textarea>
+                    <textarea id='message' name='message' class='h-24 p-2 w-full border overflow-y-scroll rounded-md  outline-none md:w-[25rem]' required >{{$ticket->message}}</textarea>
 
                     @error('message')
                         <span class='text-red-500 text-[12px]'>{{ $message }}</span>
@@ -68,7 +68,7 @@
                 <label for="category" class='text-sky-800'>Categorie:</label>
 
                 <div>
-                    <select name="category_id" id="category" class='rounded-sm p-1 bg-gray-100'  >
+                    <select name="category_id" id="category" class='rounded-md  p-1 bg-gray-100'  >
                         @foreach ($categories as $category)
                             <option value="{{$category->id}}"  {{ $category->id == $ticket->category_id ? "selected" : "" }}>{{ $category->name }}</option>
                         @endforeach

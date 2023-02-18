@@ -42,7 +42,6 @@ Route::middleware(['auth'])->group(function () {
             Route::patch('/', [HomeController::class, 'allUpdate'])->name('home.all_update');
             Route::get('/{id}', [HomeController::class, 'allShow'])->name('home.all_show');
         });
-
     });
 
     Route::prefix('admin')->middleware('admin')->group(function () {

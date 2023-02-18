@@ -67,7 +67,7 @@
                         <div class='flex flex-col gap-2'>
                             <label for="name">Nom</label>
                             <div class='flex-1'>
-                                <input type="name" id="name" name="name" class='w-full p-2 outline-none rounded-sm border' required/>
+                                <input type="name" id="name" name="name" class='w-full p-2 outline-none rounded-md  border' required/>
                                 @error('name')
                                     <span class='text-red-500 text-[12px]'>{{ $message }}</span>
                                 @enderror

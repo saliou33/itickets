@@ -18,7 +18,7 @@
             <div class='flex flex-col gap-2'>
                 <label for="name" class='text-sky-800'>Nom:</label>
                 <div>
-                    <input type="name" id="name" name="name" class='w-full p-2 outline-none rounded-sm border'  value="{{$user->name}}" required/>
+                    <input type="name" id="name" name="name" class='w-full p-2 outline-none rounded-md  border'  value="{{$user->name}}" required/>
                     @error('name')
                         <span class='text-red-500 text-[12px]'>{{ $message }}</span>
                     @enderror
@@ -28,7 +28,7 @@
             <div class='flex flex-col gap-2'>
                     <label for="email" class='text-sky-800'>Email:</label>
                     <div>
-                        <input type="email" id="email" name="email" class='w-full p-2 outline-none rounded-sm border'  value="{{$user->email}}" required/>
+                        <input type="email" id="email" name="email" class='w-full p-2 outline-none rounded-md  border'  value="{{$user->email}}" required/>
                         @error('email')
                             <span class='text-red-500 text-[12px]'>{{ $message }}</span>
                         @enderror
@@ -40,7 +40,7 @@
                 <label for="role" class='text-sky-800'>Categorie:</label>
 
                 <div>
-                    <select name="role_id" id="role" class='rounded-sm p-1 bg-gray-100 ' >
+                    <select name="role_id" id="role" class='rounded-md  p-1 bg-gray-100 ' >
                         @foreach ($roles as $role)
                             <option value="{{$role->id}}" {{ $role->id == $user->role_id ? "selected" : "" }} >{{ $role->name }}</option>
                         @endforeach

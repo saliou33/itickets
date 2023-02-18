@@ -145,8 +145,8 @@ class HomeController extends Controller
 
     public function userShow($id) {
 
-        if(Gate::denies('support')) {
-            return back()->with('danger', 'Non Autoriser.');;
+        if(auth()->user()->id != $id ) {
+            return back();
         }
 
         $user = User::find($id);
@@ -161,10 +161,6 @@ class HomeController extends Controller
 
     public function userUpdate(Request $request) {
 
-        if(Gate::denies('support')) {
-            return back()->with('danger', 'Non Autoriser.');;
-
-        }
 
         $request->validate([
             'id' => 'required',
@@ -174,6 +170,10 @@ class HomeController extends Controller
         ]);
 
         $fields = $request->only(['id', 'name', 'email', 'password']);
+
+        if(auth()->user()->id != $fields['id'] ) {
+            return back();
+        }
 
         $user = User::find($fields['id']);
 

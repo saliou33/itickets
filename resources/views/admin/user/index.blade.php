@@ -69,7 +69,7 @@
                         <div class='flex flex-col gap-2'>
                             <label for="name">Nom</label>
                             <div class='flex-1'>
-                                <input type="name" id="name" name="name" class='w-full p-2 outline-none rounded-sm border' required/>
+                                <input type="name" id="name" name="name" class='w-full p-2 outline-none rounded-md  border' required/>
                                 @error('name')
                                     <span class='text-red-500 text-[12px]'>{{ $message }}</span>
                                 @enderror
@@ -80,7 +80,7 @@
                         <div class='flex flex-col gap-2'>
                             <label for="email">Email</label>
                             <div class='flex-1'>
-                                <input type="email" id="email" name="email" class='w-full p-2 outline-none rounded-sm border' required/>
+                                <input type="email" id="email" name="email" class='w-full p-2 outline-none rounded-md  border' required/>
                                 @error('email')
                                     <span class='text-red-500 text-[12px]'>{{ $message }}</span>
                                 @enderror
@@ -90,7 +90,7 @@
                         <div class='flex flex-col gap-2'>
                             <label for="password">Mot de Passe</label>
                             <div class='flex-1'>
-                                <input type="password" id="password" name="password" class='w-full p-2 outline-none rounded-sm border' required/>
+                                <input type="password" id="password" name="password" class='w-full p-2 outline-none rounded-md  border' required/>
                                 @error('password')
                                     <span class='text-red-500 text-[12px]'>{{ $message }}</span>
                                 @enderror
@@ -100,7 +100,7 @@
                         <div class='flex flex-col gap-2'>
                             <label for="password-confirm">Confirmer Mot de Passe</label>
                             <div class='flex-1'>
-                                <input type="password" id="passwor-confirm" name="password_confirmation" class='w-full p-2 outline-none rounded-sm border' required/>
+                                <input type="password" id="passwor-confirm" name="password_confirmation" class='w-full p-2 outline-none rounded-md  border' required/>
                             </div>
                         </div>
 
@@ -109,7 +109,7 @@
                         <div class='flex flex-wrap gap-2 items-center'>
                             <label for="role">Role:</label>
                             <div class='flex-1'>
-                               <select name="role_id" id="role" class='rounded-sm py-2 px-3 bg-gray-100'>
+                               <select name="role_id" id="role" class='rounded-md  py-2 px-3 bg-gray-100'>
                                     @foreach ($roles as $role )
                                         <option value="{{ $role->id }}"> {{ $role->name }} </option>
                                     @endforeach

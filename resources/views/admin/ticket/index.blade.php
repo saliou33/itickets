@@ -71,7 +71,7 @@
                         <div class='flex flex-col gap-2'>
                             <label for="title">Titre</label>
                             <div class='flex-1'>
-                                <input type="title" id="title" name="title" class='w-full p-2 outline-none rounded-sm border' required/>
+                                <input type="title" id="title" name="title" class='w-full p-2 outline-none rounded-md  border' required/>
                                 @error('title')
                                     <span class='text-red-500 text-[12px]'>{{ $message }}</span>
                                 @enderror
@@ -81,7 +81,7 @@
                         <div class='flex flex-col gap-2'>
                             <label for="title">User ID</label>
                             <div class='flex-1'>
-                                <input type="user_id" id="user_id" name="user_id" class='w-full p-2 outline-none rounded-sm border' required/>
+                                <input type="user_id" id="user_id" name="user_id" class='w-full p-2 outline-none rounded-md  border' required/>
                                 @error('user_id')
                                     <span class='text-red-500 text-[12px]'>{{ $message }}</span>
                                 @enderror
@@ -92,7 +92,7 @@
                         <div class='flex flex-col gap-2'>
                             <label for="message">Description</label>
                             <div class='flex-1'>
-                                <textarea id='message' name='message' class='h-24 p-2 w-full border overflow-y-scroll rounded-sm outline-none' required></textarea>
+                                <textarea id='message' name='message' class='h-24 p-2 w-full border overflow-y-scroll rounded-md  outline-none' required></textarea>
 
                                 @error('message')
                                     <span class='text-red-500 text-[12px]'>{{ $message }}</span>
@@ -103,7 +103,7 @@
                         <div class='flex flex-wrap gap-2 items-center'>
                             <label for="category">Etat:</label>
                             <div class='flex-1'>
-                               <select name="status_id" id="status" class='rounded-sm py-2 px-3 bg-gray-100'>
+                               <select name="status_id" id="status" class='rounded-md  py-2 px-3 bg-gray-100'>
                                     @foreach ($statuses as $status)
                                         <option value="{{$status->id}}">{{$status->name}}</option>
                                     @endforeach
@@ -117,7 +117,7 @@
                         <div class='flex flex-wrap gap-2 items-center'>
                             <label for="category">Categorie:</label>
                             <div class='flex-1'>
-                               <select name="category_id" id="category" class='rounded-sm py-2 px-3 bg-gray-100'>
+                               <select name="category_id" id="category" class='rounded-md  py-2 px-3 bg-gray-100'>
                                     @foreach ($categories as $category)
                                         <option value="{{$category->id}}">{{$category->name}}</option>
                                     @endforeach
