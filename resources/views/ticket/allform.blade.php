@@ -74,7 +74,9 @@
                 </div>
             </div>
 
+            @if($ticket->support_id == auth()->user()->id)
             <button class='border border-red-600 bg-red-200 hover:bg-red-400 py-2 px-2 rounded-md w-fit mt-3'>Modifier</button>
+            @endif
         </form>
     </div>
 @endsection
