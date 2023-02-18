@@ -19,7 +19,7 @@ class StatusController extends Controller
 
         $status = new Status();
         $status->name = $request->input('name');
-        $status->save();
+        $status->save()->with('success', 'etat creer avec succes.');
 
         return back();
     }
@@ -29,7 +29,7 @@ class StatusController extends Controller
         $status = Status::find($id);
 
         if($status  == null) {
-            return back();
+            return back()->with('danger', 'etat introuvable.');
         }
 
         return view('admin.status.form')
@@ -46,18 +46,18 @@ class StatusController extends Controller
         $status = Status::find($id);
 
         if($status  == null) {
-            return back();
+            return back()->with('danger', 'etat introuvable.');
         }
 
         $status->name = $request->input('name');
         $status->save();
 
-        return back();
+        return back()->with('info', 'etat modifier avec succes.');;
     }
 
     public function delete($id) {
         Status::destroy($id);
 
-        return back();
+        return back()->with('warning', 'etat creer avec succes.');;
     }
 }

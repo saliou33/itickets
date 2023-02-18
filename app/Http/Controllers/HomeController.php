@@ -89,7 +89,7 @@ class HomeController extends Controller
         $ticket->message = $fields['message'];
         $ticket->save();
 
-        return back()->with('success', 'Ticket modifier avec succes.');
+        return back()->with('info', 'Ticket modifier avec succes.');
     }
 
 
@@ -138,12 +138,17 @@ class HomeController extends Controller
         $ticket->status_id = $fields['status_id'];
         $ticket->save();
 
-        return back()->with('success', 'Ticket modifier avec succes.');
+        return back()->with('info', 'Ticket modifier avec succes.');
     }
 
 
 
     public function userShow($id) {
+
+        if(Gate::denies('support')) {
+            return back()->with('danger', 'Non Autoriser.');;
+        }
+
         $user = User::find($id);
 
         if($user == null) {
@@ -155,15 +160,20 @@ class HomeController extends Controller
     }
 
     public function userUpdate(Request $request) {
+
+        if(Gate::denies('support')) {
+            return back()->with('danger', 'Non Autoriser.');;
+
+        }
+
         $request->validate([
             'id' => 'required',
-            'name' => 'required|string|min:4',
-            'password' => 'required|min:8|confirmed',
+            'name' => 'required|string',
+            'password' => 'required|min:4|confirmed',
             'email' => 'required|string|email',
-            'role_id' => 'required'
         ]);
 
-        $fields = $request->only(['id', 'name', 'email', 'role', 'password']);
+        $fields = $request->only(['id', 'name', 'email', 'password']);
 
         $user = User::find($fields['id']);
 
@@ -171,10 +181,8 @@ class HomeController extends Controller
             return back()->with('warning', 'Utilisateur Introuvable.');;
         }
 
-
         $user->name = $fields['name'];
         $user->email = $fields['email'];
-        $user->role_id = $fields['role_id'];
         $user->password = Hash::make($fields['password']);
 
         $user->save();

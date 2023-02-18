@@ -81,7 +81,7 @@
                                 hover:bg-gray-100
                                 "
                                 href="/user/{{auth()->user()->id}}"
-                                >Utilsateur</a
+                                >Profil</a
                             >
                         </li>
 

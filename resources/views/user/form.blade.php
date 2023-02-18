@@ -4,8 +4,7 @@
     <div class='px-12 py-3 text-sm'>
 
         <h1 class='text-xl mt-2 mb-6'>Profil</h1>
-
-        <form method="POST" action="/ticket"  class='flex flex-col gap-3'>
+        <form method="POST" action="/user"  class='flex flex-col gap-3'>
             @method('PATCH')
             @csrf
             <input type='hidden' name='id' value="{{$user->id}}" >
@@ -18,6 +17,11 @@
                         <span class='text-red-500 text-[12px]'>{{ $message }}</span>
                     @enderror
                 </div>
+            </div>
+
+            <div class='flex flex-col gap-2 items-baseline'>
+                <p class='text-sky-800'>Role:</p>
+                <p>{{$user->role->name}}</p>
             </div>
 
             <div class='flex flex-col gap-2'>
@@ -43,8 +47,7 @@
             <div class='flex flex-col gap-2'>
                     <label for="password-confirm" class='text-sky-800'>Confirmer Mot de Passe:</label>
                     <div>
-                        <input type="password-confirm" id="password-confirm" name="password_confirmation" class='w-full p-2 outline-none rounded-sm border'  required/>
-
+                        <input type="password" id="password-confirm" name="password_confirmation" class='w-full p-2 outline-none rounded-sm border'  required/>
                     </div>
             </div>
 

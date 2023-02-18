@@ -21,7 +21,7 @@ class RoleController extends Controller
         $role->name = $request->input('name');
         $role->save();
 
-        return back();
+        return back()->with('success', 'role creer avec succes.');
     }
 
 
@@ -29,7 +29,7 @@ class RoleController extends Controller
         $role = Role::find($id);
 
         if($role  == null) {
-            return back();
+            return back()->with('danger', 'role introuvable.');
         }
 
         return view('admin.role.form')
@@ -46,18 +46,18 @@ class RoleController extends Controller
         $role = Role::find($id);
 
         if($role  == null) {
-            return back();
+            return back()->with('danger', 'role introuvable.');
         }
 
         $role->name = $request->input('name');
         $role->save();
 
-        return back();
+        return back()->with('info', 'role modifier avec succes.');
     }
 
     public function delete($id) {
         Role::destroy($id);
 
-        return back();
+        return back()->with('warning', 'role supprimer avec succes.');
     }
 }

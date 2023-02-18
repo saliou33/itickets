@@ -37,13 +37,15 @@ Route::middleware(['auth'])->group(function () {
         Route::patch('/', [HomeController::class, 'update'])->name('home.update');
         Route::delete('/{id}', [HomeController::class, 'delete'])->name('home.delete');
 
-        Route::get('s/all', [HomeController::class, 'all'])->name('home.all');
-        Route::get('s/all/{id}', [HomeController::class, 'allShow'])->name('home.all_show');
-        Route::patch('s/all', [HomeController::class, 'allUpdate'])->name('home.all_update');
+        Route::prefix('s/all')->group(function () {
+            Route::get('/', [HomeController::class, 'all'])->name('home.all');
+            Route::patch('/', [HomeController::class, 'allUpdate'])->name('home.all_update');
+            Route::get('/{id}', [HomeController::class, 'allShow'])->name('home.all_show');
+        });
 
     });
 
-    Route::prefix('admin')->group(function () {
+    Route::prefix('admin')->middleware('admin')->group(function () {
         Route::prefix('user')->group(function () {
             Route::get('/', [UserController::class, 'index'])->name('admin.user.index');
             Route::get('/{id}', [UserController::class, 'show'])->name('admin.user.show');

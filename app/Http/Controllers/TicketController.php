@@ -31,7 +31,7 @@ class TicketController extends Controller
         $fields = $request->only(['user_id', 'title', 'message', 'category_id']);
 
         if(User::find($fields['user_id'] == null)) {
-            return back();
+            return back()->with('danger', 'utilisateur introuvable.');
         }
 
 
@@ -43,7 +43,7 @@ class TicketController extends Controller
         $ticket->status_id = $fields['status_id'];
         $ticket->save();
 
-        return back();
+        return back()->with('success', 'ticket creer avec succes.');
     }
 
 
@@ -51,7 +51,7 @@ class TicketController extends Controller
         $ticket = Ticket::find($id);
 
         if($ticket == null){
-            redirect('/');
+            return back()->with('danger', 'ticket introuvable');
         }
 
         return view('admin.ticket.form')
@@ -71,7 +71,7 @@ class TicketController extends Controller
         $fields = $request->only(['id', 'title', 'message', 'category_id', 'user_id', 'status_id']);
 
         if(User::find($fields['user_id'] == null)) {
-            return back();
+            return back()->with('danger', 'utilisateur introuvable.');;
         }
 
         $ticket = Ticket::find($fields['id']);
@@ -84,12 +84,12 @@ class TicketController extends Controller
 
         $ticket->save();
 
-        return back();
+        return back()->with('info', 'utilisateur modifier avec succes.');;
     }
 
     public function destroy($id) {
         Ticket::destroy($id);
 
-        return back();
+        return back()->with('warning', 'utilisateur supprimer avec succes.');
     }
 }

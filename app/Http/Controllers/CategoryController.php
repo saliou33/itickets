@@ -21,7 +21,7 @@ class CategoryController extends Controller
         $category->name = $request->input('name');
         $category->save();
 
-        return back();
+        return back()->with('success', 'role creer avec succes.');
     }
 
 
@@ -29,7 +29,7 @@ class CategoryController extends Controller
         $category = Category::find($id);
 
         if($category  == null) {
-            return back();
+            return back()->with('danger', 'categorie introuvable.');
         }
 
         return view('admin.category.form')
@@ -46,7 +46,7 @@ class CategoryController extends Controller
         $category = Category::find($id);
 
         if($category  == null) {
-            return back();
+            return back()->with('danger', 'categorie introuvable.');
         }
 
         $category->name = $request->input('name');
@@ -58,6 +58,6 @@ class CategoryController extends Controller
     public function delete($id) {
         Category::destroy($id);
 
-        return back();
+        return back()->with('success', 'role supprimer avec succes.');
     }
 }

@@ -20,7 +20,7 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|string|min:4',
             'email' => 'required|string|email|unique:users',
-            'password' => 'required|string|confirmed|min:8',
+            'password' => 'required|string|confirmed|min:4',
             'role_id' => 'required'
         ]);
 
@@ -34,7 +34,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect('/admin/user');
+        return back()->with('sucess', 'utilisateur creer avec succes.');
     }
 
 
@@ -42,7 +42,7 @@ class UserController extends Controller
         $user = User::find($id);
 
         if($user == null) {
-            return back();
+            return back()->with('danger', 'utilisateur introuvable.');
         }
 
         return view('admin.user.form')
@@ -57,12 +57,12 @@ class UserController extends Controller
             'role_id' => 'required'
         ]);
 
-        $fields = $request->only(['id', 'name', 'email', 'role']);
+        $fields = $request->only(['id', 'name', 'email', 'role_id']);
 
        $user = User::find($fields['id']);
 
        if($user == null) {
-            return back();
+            return back()->with('danger', 'utilisateur introuvable.');;
        }
 
        $user->name = $fields['name'];
@@ -70,13 +70,13 @@ class UserController extends Controller
        $user->role_id = $fields['role_id'];
 
        $user->save();
-       return back();
+       return back()->with('info', 'utilisateur modifier avec succes.');;
 
     }
 
     public function delete($id) {
         User::destroy($id);
 
-        return back();
+        return back()->with('warning','utilisateur supprimer avec succes.' );
     }
 }
