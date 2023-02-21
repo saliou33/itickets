@@ -1,0 +1,17 @@
+{
+  "node_modules/tw-elements/dist/js/index.min.js": {
+    "file": "assets/index.min-e0ab316a.js",
+    "isEntry": true,
+    "src": "node_modules/tw-elements/dist/js/index.min.js"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-1d3339db.css",
+    "isEntry": true,
+    "src": "resources/css/app.css"
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-fc4adb72.js",
+    "isEntry": true,
+    "src": "resources/js/app.js"
+  }
+}
