@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 echo "Running composer"
-composer global require hirak/prestissimo
 composer install --no-dev --working-dir=/var/www/html
 
 echo "Caching config..."
@@ -13,4 +12,4 @@ echo "Running migrations..."
 php artisan migrate --force
 
 echo "Running seed..."
-php artisan db:seed
+php artisan db:seed --force
